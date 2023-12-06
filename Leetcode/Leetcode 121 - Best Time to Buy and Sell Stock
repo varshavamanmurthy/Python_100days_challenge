@@ -1,0 +1,21 @@
+class Solution(object): #TIME : O(N), SPACE: O(1)
+    def maxProfit(self, prices):
+        max_profit = 0
+        #Two pointer technique
+        l=0
+        r=1
+
+        while r<len(prices):
+            buying_price = prices[l]
+            selling_price = prices[r]
+            if buying_price < selling_price: 
+                profit = selling_price - buying_price
+                max_profit = max(max_profit, profit)
+
+            else:
+                l+=1
+
+            r+=1
+
+        return max_profit    
+       
