@@ -1,0 +1,19 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+'''  
+    This solution traverses trough the given list of nums and stores the number of occurance in a dictionary, to find the duplicates.
+    Hence Time-> O(N), Space-> O(N) (As we have used dict() to store the key, value pair)
+'''
+        dictionary = {}
+        for i in nums:
+            if i not in dictionary:
+                dictionary[i] = 1
+
+            else:
+                dictionary[i]+=1
+
+        for k,v in dictionary.items():
+            if v>=2:
+                return True
+
+        return False
