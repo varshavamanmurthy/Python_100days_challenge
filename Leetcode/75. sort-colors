@@ -1,0 +1,21 @@
+        i = l = 0
+        r = len(nums)-1
+        
+        while i<=r:  #shift all 0 tp left and shift all 2 to right, this will automatically keep 1 in middle.
+            if nums[i]==2:
+                temp=nums[i]
+                nums[i]=nums[r]
+                nums[r]=2
+                r-=1
+
+            elif nums[i] == 0:
+                temp=nums[i]
+                nums[i]=nums[l]
+                nums[l]=temp
+                l+=1
+                i+=1
+
+            else:  #If 1, Just move, nothing to do
+                i+=1
+
+        return nums
