@@ -1,0 +1,28 @@
+class Solution(object):
+    def maxProduct(self, nums):
+        #Iterate from start to end buy ignoring 0
+        max_prod_answer = 0
+        cur_prod = 1
+        if len(nums)==1:
+            return nums[0]
+
+        for i in nums:
+            if i!=0:
+                cur_prod*=i
+                max_prod_answer=max(max_prod_answer, cur_prod)
+
+            else:
+                cur_prod=1
+
+         #Iterate from end to start buy ignoring 0
+        cur_prod=1
+        for i in range(len(nums)-1,-1,-1):
+            if nums[i]!=0:
+                cur_prod*=nums[i]
+                max_prod_answer=max(max_prod_answer, cur_prod)
+
+            else:
+                cur_prod=1
+
+
+        return max_prod_answer
