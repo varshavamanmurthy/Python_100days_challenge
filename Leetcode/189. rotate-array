@@ -1,0 +1,24 @@
+class Solution(object):
+    def rotate(self, nums, k):
+        n=len(nums)
+        k = k%n   #If k=8 and n=8 then 8%8=0, meaning the array is unrotated
+        #step1: Reverse the entire array
+        self.reverse(lst = nums, start_num = 0 , end_num = n-1)
+
+        #step2: Reverse the first k element in reverse array
+        self.reverse(lst = nums, start_num = 0 , end_num = k-1)
+
+        #step3: Reverse the remaining element in reverse array (Except first k)
+        self.reverse(lst = nums, start_num = k , end_num = n-1)
+
+        
+
+    #UDF to reverse the given array
+    def reverse(Self, lst, start_num, end_num):
+        while start_num < end_num: #reverse in place
+            temp = lst[start_num]
+            lst[start_num] = lst[end_num]
+            lst[end_num] =  temp
+            start_num+=1
+            end_num-=1
+
