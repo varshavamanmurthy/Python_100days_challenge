@@ -1,0 +1,26 @@
+class Solution(object):
+    def isValidSudoku(self, board):
+        row_set =[set() for i in range(9)]
+        col_set =[set() for i in range(9)]
+        grid_set =[set() for i in range(9)]
+
+
+        for i in range(9):
+            for j in range(9):
+                value_of_single_cell = board[i][j]
+                if value_of_single_cell=='.':
+                    continue
+
+                grid_num = (i//3)*3 + (j//3)
+                isPresentInRow = value_of_single_cell in row_set[i]
+                isPresentInCol = value_of_single_cell in col_set[j]
+                isPresentInGrid = value_of_single_cell in grid_set[grid_num]
+
+                if isPresentInRow or isPresentInCol or isPresentInGrid:
+                    return False
+
+                row_set[i].add(value_of_single_cell)
+                col_set[j].add(value_of_single_cell)
+                grid_set[grid_num].add(value_of_single_cell)
+
+        return True
