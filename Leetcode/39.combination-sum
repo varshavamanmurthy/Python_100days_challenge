@@ -1,0 +1,22 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        def backtrack(i, cur_lst, cur_total):
+            if cur_total==target: #positive scenario
+                answer.append(cur_lst.copy())
+                return
+
+            if i>=len(candidates) or cur_total>target: #Negative scenario
+                return
+
+
+            cur_candidate = candidates[i]  #Normal scenario
+            cur_lst.append(cur_candidate)
+            backtrack(i, cur_lst, cur_total+cur_candidate)
+            cur_lst.pop()
+            backtrack(i+1, cur_lst, cur_total)
+            
+
+
+        answer=[]
+        backtrack(0, [], 0)
+        return answer
