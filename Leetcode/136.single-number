@@ -1,0 +1,6 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        summation = sum(nums)
+        set_sum = sum(set(nums))*2
+
+        return set_sum - summation
